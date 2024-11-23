@@ -221,6 +221,25 @@
         <button>تسجيل الدخول</button>
       </div>
     </form>
+    <script>
+      function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        // اسم المستخدم وكلمة المرور الصحيحة
+        const correctUsername = "Kamal";
+        const correctPassword = "2002";
+        const message = document.getElementById('message');
+        // التحقق من المدخلات
+        if (username === correctUsername && password === correctPassword) {
+          // إذا كانت المدخلات صحيحة، يتم إعادة التوجيه
+          window.location.href = "../index.html";
+        } else {
+          // إذا كانت المدخلات خاطئة، عرض رسالة خطأ
+          message.style.color = "red";
+          message.textContent = "اسم المستخدم أو كلمة المرور غير صحيحة.";
+        }
+      }
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
