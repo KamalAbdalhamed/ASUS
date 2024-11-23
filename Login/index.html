@@ -176,8 +176,9 @@
       <span></span>
     </section>
     <form
-      action=""
       method="post"
+      id="loginForm"
+      onsubmit="return login(event)"
       data-aos="fade-down"
       data-aos-delay="100"
       data-aos-duration="500"
@@ -218,31 +219,33 @@
             ><span style="transition-delay: 500ms">ر</span>
           </label>
         </div>
-        <button>تسجيل الدخول</button>
+        <button type="submit">تسجيل الدخول</button>
+        <div class="message" id="message"></div>
       </div>
     </form>
     <script>
-      function login() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+      function login(event) {
+        event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
         // اسم المستخدم وكلمة المرور الصحيحة
         const correctUsername = "Kamal";
         const correctPassword = "2002";
-        const message = document.getElementById('message');
+
+        const message = document.getElementById("message");
+
         // التحقق من المدخلات
         if (username === correctUsername && password === correctPassword) {
-          // إذا كانت المدخلات صحيحة، يتم إعادة التوجيه
-          window.location.href = "../index.html";
+          // إذا كانت المدخلات صحيحة، يتم إرسال النموذج
+          document.getElementById("loginForm").submit();
         } else {
           // إذا كانت المدخلات خاطئة، عرض رسالة خطأ
           message.style.color = "red";
           message.textContent = "اسم المستخدم أو كلمة المرور غير صحيحة.";
         }
       }
-    </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
     </script>
   </body>
 </html>
